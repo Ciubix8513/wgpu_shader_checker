@@ -9,8 +9,9 @@ proc-macro=true
 
 [dev-dependencies]
 trybuild = "1.0.103"
+#Still need this crate for build tests to work
+wgpu = {version = "24.0.1", default-features = false, features = ["wgsl"]}
 
 [dependencies]
-naga = "24.0.0"
-syn = "2.0.98"
-wgpu = "24.0.1"
+naga = {version = "24.0.0", default-features = false, features = ["wgsl-in"]}
+syn = {version = "2.0.98", default-features = false}
