@@ -51,6 +51,10 @@ pub fn include_wgsl(input: TokenStream) -> TokenStream {
 
     let f = f.unwrap();
 
+    if f.is_empty() {
+        return compile_error(&format!("{} is empty", inp));
+    }
+
     let res = naga::front::wgsl::parse_str(&f);
 
     if let Err(e) = res {
