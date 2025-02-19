@@ -11,8 +11,13 @@ fn compile_error(error: &str) -> TokenStream {
 }
 
 #[proc_macro]
-pub fn include_wgsl_checked(input: TokenStream) -> TokenStream {
-    //Get the root of the crate
+///Load WGSL source code from a file at compile time. If the file can not be compiled it will throw
+///a compilation error.
+///
+///The macro uses absolute filenames, relative to `CARGO_MANIFEST_PATH`. It's currently impossible
+///to get a relative file location, until the `proc_macro::Span` feature is stabilized
+pub fn include_wgsl(input: TokenStream) -> TokenStream {
+    // Not sure if this is a good solution, but it works
     let p = std::env::vars()
         .find(|i| i.0 == "CARGO_MANIFEST_PATH")
         .unwrap()
@@ -55,6 +60,7 @@ pub fn include_wgsl_checked(input: TokenStream) -> TokenStream {
         return compile_error(&format!("{msg}"));
     }
 
+    //Return a shader module descriptor, the same as include_wgsl
     format!(
         "
     wgpu::ShaderModuleDescriptor {{
