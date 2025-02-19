@@ -1,0 +1,5 @@
+error: unexpected token
+ --> tests/fail/extra_parameters.rs:4:32
+  |
+4 |     include_wgsl!("as;ljghnadk", iawjofi. -0q298o, aola8 * ijkomlacxdkjsdlk)
+  |                                ^

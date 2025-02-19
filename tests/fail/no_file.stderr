@@ -1,0 +1,7 @@
+error: No such file or directory
+ --> tests/fail/no_file.rs:4:5
+  |
+4 |     include_wgsl!("./shaders/meowwow.wgsl")
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: this error originates in the macro `include_wgsl` (in Nightly builds, run with -Z macro-backtrace for more info)

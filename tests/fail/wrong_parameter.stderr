@@ -1,0 +1,5 @@
+error: expected string literal
+ --> tests/fail/wrong_parameter.rs:4:19
+  |
+4 |     include_wgsl!(kasmglskm)
+  |                   ^^^^^^^^^
