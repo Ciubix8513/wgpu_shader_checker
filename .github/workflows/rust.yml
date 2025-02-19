@@ -15,9 +15,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build
         run: cargo build
-      - name: Run doc tests
-        run: cargo test --doc -- --nocapture
-      - name: Run lib tests
-        run: cargo test --lib -- --nocapture
+      - name: Run tests
+        run: cargo test -- --nocapture
       - name: Linting
         run: cargo clippy -- -D warnings -D clippy::pedantic -D clippy::nursery
