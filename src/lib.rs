@@ -15,7 +15,7 @@ fn compile_error(error: &str) -> TokenStream {
 ///a compilation error.
 ///
 ///The macro uses absolute filenames, relative to `CARGO_MANIFEST_PATH`. It's currently impossible
-///to get a relative file location, until the `proc_macro::Span` feature is stabilized
+///to get a relative file location, until the `proc_macro::Span` inspection API feature is stabilized
 pub fn include_wgsl(input: TokenStream) -> TokenStream {
     // Not sure if this is a good solution, but it works
     let p = std::env::vars()
