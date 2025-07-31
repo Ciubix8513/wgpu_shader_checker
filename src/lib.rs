@@ -1,5 +1,3 @@
-use std::path::PathBuf;
-
 use proc_macro::TokenStream;
 use syn::parse_macro_input;
 
@@ -15,8 +13,7 @@ fn compile_error(error: &str) -> TokenStream {
 ///Load WGSL source code from a file at compile time. If the file can not be compiled it will throw
 ///a compilation error.
 ///
-///The macro uses absolute filenames, relative to `CARGO_MANIFEST_PATH`. It's currently impossible
-///to get a relative file location, until the `proc_macro::Span` inspection API feature is stabilized
+///The macro uses relative filenames, similar to the `include_str!()` macro
 ///
 ///# Examples
 /// ```rs
@@ -26,24 +23,21 @@ fn compile_error(error: &str) -> TokenStream {
 ///
 #[allow(clippy::missing_panics_doc)]
 pub fn include_wgsl(input: TokenStream) -> TokenStream {
-    // Not sure if this is a good solution, but it works
-    let p = std::env::vars().find(|i| i.0 == "CARGO_MANIFEST_PATH");
+    //I hope this works
+    let mut p = input
+        .clone()
+        .into_iter()
+        .next()
+        .unwrap()
+        .span()
+        .local_file()
+        .unwrap();
 
-    if p.is_none() {
-        return compile_error("Could not determine CARGO_MANIFEST_PATH");
-    }
-
-    let p = p.unwrap_or_default().1;
+    //Remove the filename
+    p.pop();
 
     // filename
     let inp = parse_macro_input!(input as syn::LitStr).value();
-
-    let mut p = p
-        .parse::<PathBuf>()
-        .unwrap()
-        .parent()
-        .unwrap()
-        .to_path_buf();
 
     p.push(&inp);
 
