@@ -1,13 +1,14 @@
 [package]
 name = "wgpu_shader_checker"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 repository = "https://github.com/ciubix8513/wgpu_shader_checker"
 license ="MIT"
 description = "Macro for checking wgsl shaders at compile time"
 readme = "README.md"
 keywords = ["wgpu", "wgsl", "shaders"]
 categories = ["development-tools::build-utils", "development-tools::testing"]
+rust-version = "1.88"
 
 [lib]
 proc-macro=true
