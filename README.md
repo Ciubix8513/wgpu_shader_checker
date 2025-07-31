@@ -10,9 +10,3 @@ fn main() {
   let shader = include_wgsl!("shaders/shader.wgsl")
 }
 ```
-
-## Usage note
-
-The macro expects a path relative to `CARGO_MANIFEST_DIR` as opposed to relative to the way the original macro works.
-
-This is due to it currently being impossible to implement that behaviour, until the `proc_macro::Span` inspection API feature is stabilized.

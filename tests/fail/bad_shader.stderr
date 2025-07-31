@@ -1,7 +1,7 @@
 error: expected assignment or increment/decrement, found ";"
  --> tests/fail/bad_shader.rs:5:5
   |
-5 |     include_wgsl!("../../../../shaders/fail.wgsl");
-  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5 |     include_wgsl!("../../shaders/fail.wgsl");
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   |
   = note: this error originates in the macro `include_wgsl` (in Nightly builds, run with -Z macro-backtrace for more info)
